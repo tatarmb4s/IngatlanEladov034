@@ -339,8 +339,8 @@ def StartGame(isTrueStart=False):
 sikeres = False
 while not sikeres:
     try:
-        # nehezseg:int = int(input("Milyen nehézségű feladatot szeretnél? (1-10): "))
-        nehezseg:int = 1
+        nehezseg:int = int(input("Milyen nehézségű feladatot szeretnél? (1-10): "))
+        # nehezseg:int = 1
         if nehezseg < 1 or nehezseg > 10:
             raise ValueError("A megadott nehézség nem megfelelő!")
         sikeres = True
@@ -354,8 +354,8 @@ print(f"A megadott nehézség: {nehezseg}")
 sikeres = False
 while not sikeres:
     try:
-        # penz:int = int(input("Mennyi pénzed van? (Ft): "))
-        penz:int = 20000000
+        penz:int = int(input("Mennyi pénzed van? (Ft): "))
+        # penz:int = 20000000
         if penz < 0:
             raise ValueError("A megadott pénzösszeg nem megfelelő!")
         sikeres = True
@@ -367,4 +367,4 @@ StartGame(isTrueStart=True)
 
 
 
-# © Copryright 2024 - Tatár Mátyás Bence, Kennedi Nadja
+# © Copryright 2024 - Kennedi Nadja
