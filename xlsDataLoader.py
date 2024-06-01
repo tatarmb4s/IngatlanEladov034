@@ -142,7 +142,7 @@ def GenerateIngatlan(tipus):
             else:
                 index = ingatlan_data[tipus].Dates.get_loc(currentDate)
                 gotar = GenerateAr(ingatlan_data[tipus].arak[index], nehezseg, tipus)
-                ar = gotar
+                ar = gotar*meret
             sikeres = True
         except Exception as e:
             failTimes += 1
@@ -190,7 +190,7 @@ def HandlePurchase(tipus:str):
         if not selected_id.isdigit() or int(selected_id) >= len(currentStore[tipus]):
             
             if selected_id == "n":
-                HandleSell()
+                StartGame()
             
             print("Érvénytelen ID! Kérem, adjon meg egy létező ID-t.")
         else:
@@ -292,12 +292,20 @@ def StartGame(isTrueStart=False):
         vege = True
     
     
-
-    Lakóingatlanok = currentPrices["Lakóingatlanok"]
-    Családi = currentPrices["Családi házak"]
-    Téglalakások = currentPrices["Téglalakások"]
-    Panellakások = currentPrices["Panellakások"]
-    Sorház = currentPrices["Sorház"]
+    try: 
+        Lakóingatlanok = currentPrices["Lakóingatlanok"]
+        Családi = currentPrices["Családi házak"]
+        Téglalakások = currentPrices["Téglalakások"]
+        Panellakások = currentPrices["Panellakások"]
+        Sorház = currentPrices["Sorház"]
+    except:
+        GenerateStores()
+        Lakóingatlanok = currentPrices["Lakóingatlanok"]
+        Családi = currentPrices["Családi házak"]
+        Téglalakások = currentPrices["Téglalakások"]
+        Panellakások = currentPrices["Panellakások"]
+        Sorház = currentPrices["Sorház"]
+    
     vasarlas = Menu(f"{GetStats()}Vásárlás")
     vasarlas.add_options([
         (f"Lakóingatlanok {Lakóingatlanok}", lambda: HandlePurchase("Lakóingatlanok")),
